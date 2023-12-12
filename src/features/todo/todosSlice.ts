@@ -1,4 +1,11 @@
-import { PayloadAction, createSlice, nanoid } from "@reduxjs/toolkit"
+import { PayloadAction, createSelector, createSlice, nanoid } from "@reduxjs/toolkit"
+import { type RootState } from "../../app/store"
+
+export enum EFilterValue {
+  All = "All",
+  Filtered = "Filtered",
+  Unfiltered = "Unfiltered"
+}
 
 type TTodo = {
   id: string,
@@ -7,11 +14,13 @@ type TTodo = {
 }
 
 export type TTodosState = {
-  items: TTodo[]
+  items: TTodo[],
+  filterValue: EFilterValue
 }
 
 const initialState: TTodosState = {
-  items: []
+  items: [],
+  filterValue: EFilterValue.All
 }
 
 const todosSlice = createSlice({
@@ -34,9 +43,27 @@ const todosSlice = createSlice({
     },
     todoRemoved(state, action: PayloadAction<string>) {
       state.items = state.items.filter(todo => todo.id !== action.payload)
+    },
+
+    filterValueSet(state, action: PayloadAction<EFilterValue>) {
+      state.filterValue = action.payload
     }
   }
 })
 
+export const selectFiltered = createSelector([
+  (state: RootState) => state.todos.items,
+  (state: RootState) => state.todos.filterValue
+],
+(list, filterValue) => {
+  if (filterValue === EFilterValue.Filtered || filterValue === EFilterValue.Unfiltered) {
+    const filterCriteria = filterValue === EFilterValue.Filtered
+    return list.filter(todo => todo.done === filterCriteria)
+  } else {
+    return [...list]
+  }
+})
+
+
 export default todosSlice.reducer
-export const { todoAdded, todoRemoved, todoToggled } = todosSlice.actions
+export const { todoAdded, todoRemoved, todoToggled, filterValueSet } = todosSlice.actions
