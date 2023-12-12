@@ -1,7 +1,8 @@
 {
   "cSpell.words": [
     "arslan",
-    "reduxjs"
+    "reduxjs",
+    "todos"
   ],
   "files.exclude": {
     "node_modules/": true,
