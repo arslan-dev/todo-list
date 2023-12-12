@@ -1,0 +1,10 @@
+{
+  "cSpell.words": [
+    "arslan",
+    "reduxjs"
+  ],
+  "files.exclude": {
+    "node_modules/": true,
+    "public/": true,
+  }
+}
