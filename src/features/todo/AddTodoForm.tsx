@@ -1,6 +1,6 @@
 import { SyntheticEvent, useState } from "react";
 import { useDispatch } from "react-redux";
-import { todosAdded } from "./todosSlice";
+import { todoAdded } from "./todosSlice";
 
 export default function AddTodoForm() {
   const [value, setValue] = useState('')
@@ -13,7 +13,7 @@ export default function AddTodoForm() {
       return
     }
 
-    dispatch(todosAdded(value))
+    dispatch(todoAdded(value))
     setValue("")
   }
 
