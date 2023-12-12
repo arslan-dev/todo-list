@@ -4,6 +4,7 @@ import { afterEach, describe, expect, test, it } from 'vitest'
 import renderWithProviders from '../../utils/test-utils'
 import TodoList from './TodoList'
 import { RootState } from '../../app/store'
+import { EFilterValue } from './todosSlice'
 
 afterEach(() => cleanup())
 
@@ -13,7 +14,8 @@ describe('TodoList RD integration tests', () => {
       items: [
         { id:"1", title: "Alpha", done: false},
         { id:"2", title: "Bravo", done: false},
-      ]
+      ],
+      filterValue: EFilterValue.All
     }
   }
 

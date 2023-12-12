@@ -4,6 +4,7 @@ import App from './App.tsx'
 import 'bootstrap/dist/css/bootstrap.css'
 import { Provider } from 'react-redux'
 import { RootState, setupStore } from './app/store'
+import { EFilterValue } from './features/todo/todosSlice.ts'
 
 const preloadedState: RootState = {
   todos: {
@@ -11,7 +12,8 @@ const preloadedState: RootState = {
       {id: "1", title: "Alpha", done: true},
       {id: "2", title: "Bravo", done: false},
       {id: "3", title: "Charlie", done: false},
-    ]
+    ],
+    filterValue: EFilterValue.All
   }
 }
 

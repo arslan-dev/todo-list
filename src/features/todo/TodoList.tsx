@@ -1,9 +1,9 @@
 import { useDispatch } from "react-redux"
 import { useAppSelector } from "../../app/hooks"
-import { todoRemoved, todoToggled } from "./todosSlice"
+import { selectFiltered, todoRemoved, todoToggled } from "./todosSlice"
 
 export default function TodoList() {
-  const todoItems = useAppSelector(state => state.todos.items)
+  const todoItems = useAppSelector(selectFiltered)
   const dispatch = useDispatch()
 
   if (todoItems.length === 0) {

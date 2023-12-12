@@ -1,4 +1,5 @@
 import AddTodoForm from "./AddTodoForm";
+import FilterBar from "./FilterBar";
 import TodoList from "./TodoList";
 
 export default function Todo() {
@@ -6,7 +7,7 @@ export default function Todo() {
     <main className="row">
       <div className="col">
         <section>
-          Filter
+          <FilterBar />
         </section>
         <article>
           <TodoList />
