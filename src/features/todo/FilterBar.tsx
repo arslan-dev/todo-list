@@ -5,6 +5,10 @@ import { EFilterValue, filterValueSet } from "./todosSlice"
 export default function FilterBar() {
   const dispatch = useDispatch()
   const filterValue = useAppSelector(state => state.todos.filterValue)
+  const allTodos = useAppSelector(state => state.todos.items)
+
+  const finishedAmount = allTodos.filter(todo => todo.done).length
+  const unfinishedAmount = allTodos.filter(todo => !todo.done).length
 
   return (
     <div>
@@ -18,6 +22,7 @@ export default function FilterBar() {
         <option value="Filtered">All</option>
         <option value="Unfiltered">All</option>
       </select>
+      <label>{finishedAmount} done / {unfinishedAmount} todo</label>
     </div>
   )
 }
