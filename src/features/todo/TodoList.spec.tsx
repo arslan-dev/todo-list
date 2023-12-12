@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom/vitest'
-import { cleanup, screen } from '@testing-library/react'
+import { cleanup, fireEvent, screen } from '@testing-library/react'
 import { afterEach, describe, expect, test, it } from 'vitest'
 import renderWithProviders from '../../utils/test-utils'
 import TodoList from './TodoList'
@@ -7,24 +7,36 @@ import { RootState } from '../../app/store'
 
 afterEach(() => cleanup())
 
-describe('TodoList R integration tests', () => {
+describe('TodoList RD integration tests', () => {
   const stateWithTwoTodos: RootState = {
     todos: {
       items: [
-        { id:"1", title: "Alpha"},
-        { id:"2", title: "Bravo"},
+        { id:"1", title: "Alpha", done: false},
+        { id:"2", title: "Bravo", done: false},
       ]
     }
   }
 
   test("Initially the list should be empty", () => {
     renderWithProviders(<TodoList />)
-    expect(screen.queryByText(/no items to display/i)).toBeInTheDocument()
+    expect( screen.queryByText(/no items to display/i)).toBeInTheDocument()
   })
 
   it('should display items correctly', () => { 
     renderWithProviders(<TodoList />, { preloadedState: stateWithTwoTodos })
-    expect(screen.queryByText(/Alpha/i)).toBeInTheDocument()
-    expect(screen.queryByText(/Bravo/i)).toBeInTheDocument()
+    expect( screen.queryByText(/Alpha/i) ).toBeInTheDocument()
+    expect( screen.queryByText(/Bravo/i) ).toBeInTheDocument()
+  })
+
+  it('should toggle the todo', () => {
+    renderWithProviders(<TodoList />, { preloadedState: stateWithTwoTodos })
+    const $checkbox = screen.getByLabelText(/Alpha/i)
+    expect( $checkbox ).not.toBeChecked()
+
+    fireEvent.click($checkbox)
+    expect( $checkbox ).toBeChecked()
+
+    fireEvent.click($checkbox)
+    expect( $checkbox ).not.toBeChecked()
   })
 })
