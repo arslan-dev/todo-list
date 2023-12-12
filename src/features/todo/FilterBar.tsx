@@ -11,18 +11,19 @@ export default function FilterBar() {
   const unfinishedAmount = allTodos.filter(todo => !todo.done).length
 
   return (
-    <div>
-      <label htmlFor="filterSelect">Filter</label>
+    <div className="input-group mb-3">
+      <label className="input-group-text" htmlFor="filterSelect">Filter</label>
       <select
         id="filterSelect"
+        className="form-select"
         value={filterValue}
         onChange={e => dispatch( filterValueSet(e.target.value as EFilterValue))}
       >
         <option value="All">All</option>
-        <option value="Filtered">All</option>
-        <option value="Unfiltered">All</option>
+        <option value="Filtered">Filtered</option>
+        <option value="Unfiltered">Unfiltered</option>
       </select>
-      <label>{finishedAmount} done / {unfinishedAmount} todo</label>
+      <label className="input-group-text">{finishedAmount} done / {unfinishedAmount} todo</label>
     </div>
   )
 }
