@@ -14,17 +14,22 @@ export default function AddTodoForm() {
     }
 
     dispatch(todosAdded(value))
+    setValue("")
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="newTodoTitle">New Todo</label>
-      <input
-        type="text"
-        id="newTodoTitle"
-        value={value}
-        onChange={e => setValue(e.target.value)}
-      />
+    <form className="text-end" onSubmit={handleSubmit}>
+      <div className="form-floating mb-3">
+        <input
+          type="text"
+          id="newTodoTitle"
+          className="form-control"
+          placeholder="Feed the cat"
+          value={value}
+          onChange={e => setValue(e.target.value)}
+        />
+        <label htmlFor="newTodoTitle">New Todo</label>
+      </div>
       <button
         type="submit"
         className="btn btn-primary"

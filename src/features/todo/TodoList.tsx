@@ -16,6 +16,6 @@ export default function TodoList() {
     </li>
   })
 
-  return <ul className="list-group">{ todoList }</ul>
+  return <ul className="list-group mb-3">{ todoList }</ul>
 }
 

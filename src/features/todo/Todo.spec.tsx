@@ -15,6 +15,7 @@ describe('Todo C integration tests', () => {
     fireEvent.click($submit)
 
     expect(screen.queryByText('Alpha')).toBeInTheDocument()
+    expect($input, "Clear value after submit").toHaveValue("")
   })
 
   it("should not add todo with an empty title", () => {
