@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom/vitest'
-import { cleanup, fireEvent, screen } from '@testing-library/react'
+import { cleanup, fireEvent, getByText, screen } from '@testing-library/react'
 import { afterEach, describe, expect, test, it } from 'vitest'
 import renderWithProviders from '../../utils/test-utils'
 import TodoList from './TodoList'
@@ -38,5 +38,15 @@ describe('TodoList RD integration tests', () => {
 
     fireEvent.click($checkbox)
     expect( $checkbox ).not.toBeChecked()
+  })
+
+  it("should delete the todo", () => {
+    renderWithProviders(<TodoList />, { preloadedState: stateWithTwoTodos })
+    const $checkbox = screen.getByLabelText(/Alpha/i)
+    const $delBtn = getByText( $checkbox.parentElement!, "Delete" )
+
+    fireEvent.click($delBtn)
+    expect( screen.queryByText(/Alpha/i) ).not.toBeInTheDocument()
+    expect( screen.queryByText(/Bravo/i) ).toBeInTheDocument()
   })
 })

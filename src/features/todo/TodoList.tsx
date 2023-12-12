@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux"
 import { useAppSelector } from "../../app/hooks"
-import { todoToggled } from "./todosSlice"
+import { todoRemoved, todoToggled } from "./todosSlice"
 
 export default function TodoList() {
   const todoItems = useAppSelector(state => state.todos.items)
@@ -24,6 +24,13 @@ export default function TodoList() {
         onChange={() => dispatch(todoToggled(todo.id))}
       />
       <label htmlFor={checkboxId}>{ todo.title }</label>
+      <button
+        type="button"
+        className="btn btn-danger"
+        onClick={() => dispatch(todoRemoved(todo.id))}
+      >
+        Delete
+      </button>
     </li>
   })
 
