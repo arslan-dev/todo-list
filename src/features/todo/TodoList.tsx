@@ -15,15 +15,23 @@ export default function TodoList() {
 
     return <li
       key={todo.id}
-      className="list-group-item list-group-item-action"
+      className="list-group-item list-group-item-action d-flex align-items-center justify-content-between"
     >
       <input
         type="checkbox"
+        className="form-check-input me-2"
         id={checkboxId}
         checked={todo.done}
         onChange={() => dispatch(todoToggled(todo.id))}
       />
-      <label htmlFor={checkboxId}>{ todo.title }</label>
+
+      <label
+        htmlFor={checkboxId}
+        className="form-check-label flex-grow-1"
+      >
+        { todo.title }
+      </label>
+
       <button
         type="button"
         className="btn btn-danger"
