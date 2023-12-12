@@ -7,7 +7,7 @@ import { RootState } from '../../app/store'
 
 afterEach(() => cleanup())
 
-describe('TodoList specs', () => {
+describe('TodoList R integration tests', () => {
   const stateWithTwoTodos: RootState = {
     todos: {
       items: [

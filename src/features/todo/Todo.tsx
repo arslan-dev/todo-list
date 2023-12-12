@@ -1,3 +1,6 @@
+import AddTodoForm from "./AddTodoForm";
+import TodoList from "./TodoList";
+
 export default function Todo() {
   return (
     <main className="row">
@@ -6,10 +9,10 @@ export default function Todo() {
           Filter
         </section>
         <article>
-          List
+          <TodoList />
         </article>
         <section>
-          Add new
+          <AddTodoForm />
         </section> 
       </div>
     </main>
