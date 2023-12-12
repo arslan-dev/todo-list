@@ -3,7 +3,7 @@ import todosReducer, { TTodosState, todosAdded } from './todosSlice'
 
 describe("CRUD todos", () => {
   const initialState: TTodosState = {
-    todoItems: []
+    items: []
   }
 
   it("should return initial state", () => {
@@ -12,7 +12,7 @@ describe("CRUD todos", () => {
 
   it("should add new todo", () => {
     const todosState = todosReducer(initialState, todosAdded('Alpha'))
-    expect(todosState.todoItems).toHaveLength(1)
-    expect(todosState.todoItems[0].title).toStrictEqual('Alpha')
+    expect(todosState.items).toHaveLength(1)
+    expect(todosState.items[0].title).toStrictEqual('Alpha')
   })
 })

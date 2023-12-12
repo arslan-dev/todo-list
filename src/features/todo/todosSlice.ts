@@ -1,15 +1,16 @@
-import { PayloadAction, createSlice } from "@reduxjs/toolkit"
+import { PayloadAction, createSlice, nanoid } from "@reduxjs/toolkit"
 
 type TTodo = {
+  id: string,
   title: string
 }
 
 export type TTodosState = {
-  todoItems: TTodo[]
+  items: TTodo[]
 }
 
 const initialState: TTodosState = {
-  todoItems: []
+  items: []
 }
 
 const todosSlice = createSlice({
@@ -18,10 +19,10 @@ const todosSlice = createSlice({
   reducers: {
     todosAdded: {
       reducer(state, action: PayloadAction<TTodo>) {
-        state.todoItems.push(action.payload)
+        state.items.push(action.payload)
       },
       prepare(title: string) {
-        return { payload: { title } }
+        return { payload: { id: nanoid(), title } }
       }
     }
   }
