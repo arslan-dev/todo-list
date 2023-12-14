@@ -30,7 +30,7 @@ export default function AddTodoForm() {
 
   return (
     <form className="text-end" onSubmit={handleSubmit}>
-      <div className="form-floating mb-3">
+      <div className="form-floating mb-3 text-start">
         <input
           type="text"
           id="newTodoTitle"
@@ -42,7 +42,7 @@ export default function AddTodoForm() {
         <label htmlFor="newTodoTitle">New Todo</label>
         {
           thereIsVisibleLengthError &&
-          <div className="form-text text-danger">The title's length should not exceed ${MAX_TITLE_LENGTH} characters!</div>
+          <div className="form-text text-danger">The title's length should not exceed {MAX_TITLE_LENGTH} characters!</div>
         }
       </div>
       <button

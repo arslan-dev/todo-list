@@ -20,8 +20,8 @@ export default function FilterBar() {
         onChange={e => dispatch( filterValueSet(e.target.value as EFilterValue))}
       >
         <option value="All">All</option>
-        <option value="Filtered">Filtered</option>
-        <option value="Unfiltered">Unfiltered</option>
+        <option value="Finished">Finished</option>
+        <option value="Unfinished">Unfinished</option>
       </select>
       <label className="input-group-text">{finishedAmount} done / {unfinishedAmount} todo</label>
     </div>

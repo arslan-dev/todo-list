@@ -54,15 +54,15 @@ describe("Filter todos", () => {
   }
 
   it("should display filtered todos", () => {
-    let actualState = todosReducer(stateWithThreeTodos, filterValueSet(EFilterValue.Filtered))
-    expect( actualState.filterValue ).toStrictEqual( EFilterValue.Filtered )
+    let actualState = todosReducer(stateWithThreeTodos, filterValueSet(EFilterValue.Finished))
+    expect( actualState.filterValue ).toStrictEqual( EFilterValue.Finished )
 
     let actualFilteredItems = selectFiltered({ todos: actualState })
     expect( actualFilteredItems ).toHaveLength(1)
     expect( actualFilteredItems[0].title).toStrictEqual( 'Alpha' )
 
-    actualState = todosReducer(actualState, filterValueSet(EFilterValue.Unfiltered))
-    expect( actualState.filterValue ).toStrictEqual( EFilterValue.Unfiltered )
+    actualState = todosReducer(actualState, filterValueSet(EFilterValue.Unfinished))
+    expect( actualState.filterValue ).toStrictEqual( EFilterValue.Unfinished )
 
     actualFilteredItems = selectFiltered({ todos: actualState })
     expect( actualFilteredItems ).toHaveLength(2)

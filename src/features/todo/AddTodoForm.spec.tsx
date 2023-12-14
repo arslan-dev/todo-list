@@ -30,6 +30,6 @@ describe("Title length validation", () => {
 
     fireEvent.change($titleInput, { target: { value: "12345678900000"}})
     fireEvent.click($submitBtn)
-    expect( screen.queryByText(/title's length should not exceed/i)).toBeInTheDocument()
+    expect( screen.queryByText(/The title's length should not exceed 10 characters!/i)).toBeInTheDocument()
   })
 })

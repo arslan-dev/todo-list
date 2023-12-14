@@ -24,15 +24,15 @@ describe("Filter bar tests", () => {
   it("should filter todos correctly", () => {
     renderWithProviders(<Todo />, { preloadedState: stateWithThreeTodos }) 
     const $filterSelect = screen.getByLabelText("Filter")
-    fireEvent.change($filterSelect, { target: { value: "Filtered" }})
-    expect( $filterSelect ).toHaveValue("Filtered")
+    fireEvent.change($filterSelect, { target: { value: "Finished" }})
+    expect( $filterSelect ).toHaveValue("Finished")
 
     expect( screen.queryByText("Alpha")).toBeInTheDocument()
     expect( screen.queryByText("Bravo")).not.toBeInTheDocument()
     expect( screen.queryByText("Charlie")).not.toBeInTheDocument()
 
-    fireEvent.change($filterSelect, { target: { value: "Unfiltered" }})
-    expect( $filterSelect ).toHaveValue("Unfiltered")
+    fireEvent.change($filterSelect, { target: { value: "Unfinished" }})
+    expect( $filterSelect ).toHaveValue("Unfinished")
 
     expect( screen.queryByText("Alpha")).not.toBeInTheDocument()
     expect( screen.queryByText("Bravo")).toBeInTheDocument()
@@ -45,7 +45,7 @@ describe("Filter bar tests", () => {
     fireEvent.click($checkbox)
 
     const $filterSelect = screen.getByLabelText("Filter")
-    fireEvent.change($filterSelect, { target: { value: "Filtered" }})
+    fireEvent.change($filterSelect, { target: { value: "Finished" }})
 
     expect( screen.queryByText("Alpha")).toBeInTheDocument()
     expect( screen.queryByText("Bravo")).toBeInTheDocument()
@@ -59,7 +59,7 @@ describe("Filter bar tests", () => {
 
     fireEvent.click($delBtn)
     const $filterSelect = screen.getByLabelText("Filter")
-    fireEvent.change($filterSelect, { target: { value: "Filtered" }})
+    fireEvent.change($filterSelect, { target: { value: "Finished" }})
 
     expect( screen.queryByText("Alpha")).not.toBeInTheDocument()
     expect( screen.queryByText("Bravo")).not.toBeInTheDocument()
@@ -76,7 +76,7 @@ describe("Counter tests", () => {
   it("should not change after applying filter", () => {
     renderWithProviders(<FilterBar />, { preloadedState: stateWithThreeTodos })    
     const $filterSelect = screen.getByLabelText("Filter")
-    fireEvent.change($filterSelect, { target: { value: "Filtered" }})
+    fireEvent.change($filterSelect, { target: { value: "Finished" }})
 
     expect( screen.queryByText("1 done / 2 todo")).toBeInTheDocument()
   })

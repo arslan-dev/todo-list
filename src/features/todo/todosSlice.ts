@@ -3,8 +3,8 @@ import { type RootState } from "../../app/store"
 
 export enum EFilterValue {
   All = "All",
-  Filtered = "Filtered",
-  Unfiltered = "Unfiltered"
+  Finished = "Finished",
+  Unfinished = "Unfinished"
 }
 
 type TTodo = {
@@ -56,8 +56,8 @@ export const selectFiltered = createSelector([
   (state: RootState) => state.todos.filterValue
 ],
 (list, filterValue) => {
-  if (filterValue === EFilterValue.Filtered || filterValue === EFilterValue.Unfiltered) {
-    const filterCriteria = filterValue === EFilterValue.Filtered
+  if (filterValue === EFilterValue.Finished || filterValue === EFilterValue.Unfinished) {
+    const filterCriteria = filterValue === EFilterValue.Finished
     return list.filter(todo => todo.done === filterCriteria)
   } else {
     return [...list]
