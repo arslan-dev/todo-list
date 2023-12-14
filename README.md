@@ -1,4 +1,5 @@
 # Todo List test assignment
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/arslan-dev/todo-list)
 This is a solution for the typical test task that can be asked of the applicant in technical interviews for the Front-end web developer position. I've adopted it from the existing test task, but I’ve added fairly more than the maximum amount of features that was asked to be implemented in the original assignment.
 ## The task itself
 To create an app that can manipulate (CRUD), validate and filter Todos.
